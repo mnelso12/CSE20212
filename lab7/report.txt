@@ -1,0 +1,80 @@
+Madelyn Nelson
+Lab 7&8 CSE20212
+
+I have pasted my logged times below. The total is about 10 hours. It is in this
+format because my group made a shell script to keep track of our hours for us.
+I think I've worked more hours than this, but I forgot to record them.
+
+Madelyn;in;03-16-2015;02:30:22 PM
+Madelyn;out;03-16-2015;02:31:42 PM
+Madelyn;in;03-16-2015;02:49:22 PM
+Madelyn;out;03-16-2015;02:52:08 PM
+Madelyn;in;03-17-2015;11:08:10 AM
+Madelyn;out;03-17-2015;01:34:13 PM
+Madelyn;in;03-17-2015;05:12:34 PM
+Madelyn;out;03-17-2015;05:52:56 PM
+Madelyn;in;03-18-2015;12:15:23 AM
+Madelyn;out;03-18-2015;02:14:21 AM
+Madelyn;in;03-19-2015;10:04:12 AM
+Madelyn;out;03-19-2015;01:52:56 PM
+Madelyn;in;03-22-2015;11:08:21 PM
+Madelyn;out;03-23-2015;01:51:14 AM
+Madelyn;in;03-23-2015;03:41:22 PM
+Madelyn;out;03-23-2015;03:46:28 PM
+
+My main task for the beginning weeks of this lab was to review SDL tutorials
+and to figure out specifically how to make the best scrolling background
+possible. The SDL tutorial that I found the most helpful was
+http://lazyfoo.net/SDL_tutorials/lesson22/ , explaining the theory behind
+scrolling backgrounds. It was difficult to organize with my group how exactly
+each element of our typing game would be implemented. At first, I was able to
+make a scrolling background by making a new method in the TypeRight.cpp class.
+However, after reconsidering it with my group, we decided that the background
+would be easier to handle/change based on levels of the game if we actually
+made it into a public sprite class. As a result, I had to rewrite the scrolling
+background. It was easier the second time, but ideally we would have figured
+out what format we wanted the code in originally so we would not have had to
+keep changing it later. It was also a struggle to make the background look
+seamless in many cases. The free backgrounds online weren't always continuous;
+the way I programmed it, we actually need to use image files that have the
+original image and an exact copy of it on one side, making it twice as wide.
+Although it made sense to me, it was difficult to explain to my group the logic
+I used to be able to make the background run. It took a lot of demonstrations
+with paper to explain what I did, even though I tried to comment it well. Using
+the Sprite class that my group members made, I was able to create a child Cat
+class that animates a cheetah/jaguar. Because I worked the most on the
+scrolling background, I got to choose which images we use for each level. So
+far, I have tried actual pictures of nature and many drawings. I wanted to do a
+scrolling background of Notre Dame, but because I was scared of copyright
+issues, I ended up drawing my own background of ND on a free online sketching
+website. Drawing my own background was really fun, and it gave me a ton more
+control over the seems. If I draw the background myself, I can easily prevent
+breaks in the picture when the image is changing. It was also difficult to keep
+track of which files contain which parts of the program. We have so many
+classes and files that it can be difficult to figure out which file contains
+the code that changes the location of a certain sprite, for example. Right now
+I am doing more theoretical work than coding. As a group, we are pretty
+confident when it comes to sprites and changing backgrounds. I am focusing on
+figuring out how to make the levels harder, what words to use in the typing
+game, and what kinds of sprites we want on each level (and possible cheat codes).
+Soon I will work on making the sprites move in addition to their animation.
+
+When I imagined this lab and wrote the original rubric, I thought my group
+would focus more on the user side (entering words, displaying words on the
+screen, etc.). However, we have assumed that we can handle that later, and are
+focusing on making animations and backgrounds work. We did not make a text
+based game first, but are rather saving that for after we have working
+graphics. We have yet to display any words on the screen, and have only began
+to make lists of words that will eventually be randomly chosen and displayed
+for the user to type on each level. We believe that these tasks can be done
+later fairly quickly. I have successfully animated a practice sprite and made
+several working scrolling backgrounds, not just one.
+
+
+https://github.com/cshinaver/TypeRight/
+
+Here is a link to the repository. I am responsible for the Background.cpp,
+Background.h, Cat.cpp, and Cat.h, as well as editing many of our other main
+files. 
+
+

@@ -1,0 +1,99 @@
+Madelyn Nelson
+CSE20212 Lab 1
+Connect Four (with Computer Player)
+
+This program is very simple from the user's perspective. The board is displayed
+in the beginning, labeled with columns 0 through 6. The program outputs which
+player's turn it is. The user is player 1 and the computer is player 2. As
+described in the instructions on Sakai, the user is assumed to only input
+integer values, not characters or strings. There is an error message in the
+play function that displays if the integer user input is not between 0 and 6.
+Each time the board is displayed, the user is also informed that he/she can
+enter -1 in order to quit the game. 
+
+The error message from the getDisc() function was moved to the didWin()
+function in the if loops. Instead of a message to the user (which would make
+the board very visually busy) each time a disc was compared to its neighbor,
+it made more sense to check if the 4-in-a-row string of characters were simply
+space characters ' ', rather than 'X' or 'O'. 
+
+The computer player is simply a random number generator between 0 and 6, not
+including 6 (this makes it slightly easier for the human to win). The
+computer picks a random column and tries to enter a piece there. The
+computer's input and the user's input go through the same error checking
+process in the play function, so if the computer happens to pick a full
+column, the computer will have another turn to randomly select a valid
+placement, and so on. It is possible for an error message to be displayed if
+the computer picks a column that is full, but the computer will immediately
+pick another input value so the game will not be obstructed.
+
+My extra credit computer player is very simple. The play function has two
+options. It checks whether the player is equal to 1 (user) or 2 (computer) and
+if the player is the user then it calls cin to enter a value; if the player is
+the computer then it simply sets the col variable equal to a random number
+between 0 and 6. In order to use this rand function I included the cstdlib.
+This computer player, however primitive, is still a good opponent in many
+games.
+
+The game determines the winner by calling the didWin function each turn after
+the 7th iteration. It is only possible to win the game after the 7th overall
+turn, so this method is slightly more efficient that checking if a player won
+each and every turn in the beginning. The didWin function has four sections:
+horizontal, vertical, diagonal north west, and diagonal south west. The first
+section, horizontal, runs nested for loops that account for the four leftmost
+columns (all of their arrays), and checks whether or not there is a set of
+four corresponding pieces in a row going from left to right starting at that
+point. There is only need to check the leftmost four columns using this
+method. Similarly, the vertical section in the didWin function only checks the
+bottom four rows of all the columns, and checks each set of four going from
+the bottom up. 
+
+The diagonal functions are named assuming north is up (it was easier for me to
+remember this way). The north west diagonal section accounts for the first
+four columns' bottom three rows and checks for a set of matching pieces that
+increase on a diagonal in the up/right north/west direction. The south west
+function starts in the top left corner of the board and checks for matches in
+a similar manner, except by travelling in the bottom/left south/west
+direction.
+
+I chose to make my program more efficient by not making the didWin function
+check every space in the board, and instead graphically determining which
+squares were necessary to test for each of the above options. 
+
+The play function is the heart of the program from the programmer's
+perspective. In some ways, it resembles a would-be main function if this lab
+was organized differently. First, the display function is called to display
+the current board to the user. The player number is determined using the
+modular arithmetic method on Sakai. Cout is then used to output which player's
+turn it is at the time. As described earlier in this report, cin or rand() are
+used to input the next move into the col variable. The play function checks to
+see if the input is valid, and if so moves on to set the disc variable equal
+to either 'X' or 'O', depending on the player. The addDisc function is a
+modified version of the suggested one on Sakai, for I made it output an
+integer value that indicated whether or not the disc was added successfully.
+If it was not added, i.e. the row was determined to be full using isFull(),
+the same player is called to make a different move. The play() function then
+checks to see if either player has won (after the 7th turn), and if so
+displays a victory message, displays the last board after the winning move,
+and exits the program. If the turn number is equal to 42, meaning all the
+spaces are occupied, a tie message is displayed and the program also
+terminates. 
+
+This program was verified by first testing the play function without a
+computer player. There were originally issues with segmentation faults on the
+seventh turn due to an error in the didWin function, causing the program to
+look for a non-existant value in the disc array. The program was verified
+through many tests using differnt winning scenarios, including horizontal,
+vertical, and both diagonal angles.
+
+The get fuctions are useful for obtaining private variables of other classes. 
+Without such a function, these private variabes would be unattainable by the
+other classes, such as C4Board. 
+
+Deconstructors are needed with dynamic memory management because the memory
+allocation specified using "new" needs to be undone once it is no longer
+needed in the program. If "new" is used, "delete" must be used as well.
+Deconstructors are ideal locations for "delete" because it is called when the
+program exits the class, so that memory no longer needs to be allocated for
+what it was used for previously.
+

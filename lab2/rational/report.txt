@@ -1,0 +1,85 @@
+Madelyn Nelson
+CSE20212 Lab 2 Operator Overloading
+Rational Program
+
+From the user's perspective, this program is pretty self-explanatory. At first,
+the user is prompted to enter the numerator and denomerator of two rationals.
+The two rationals, labeled A and B for clarity, are then displayed in fraction
+form for the user to see. A menu then pops up telling the user which functions
+can be done using these two rationals. Some of the functions are a little
+bizarre, such as "alternatively subtracting and dividing the rationals", but
+their menu descriptions tell the user exactly what they do. Some of the menu
+options are not commutitive: for example, the limit option only takes the limit
+of the first rational, A, as it is raised to infinity. Once the user has
+chosen a function and the output has been displayed, the program loops back to
+the start and asks the user to enter two new rationals. There is a 'q' option
+that the user can choose in the menu in order to break the while loop and
+terminate the program.
+
+The rational.h file is organized with the constructors and three
+methods that are used with each fraction, followed by six overloaded operator
+methods (<< global and the rest in public), followed by six mathematical
+functions that each use one or more of the overloaded operators. The distance
+method was a fun addition that I considered adding but ended up not using. I
+commented it out rather than deleting it just in case I choose to someday go
+back and tamper with it. There are only two private variables in the Rational
+class, called numer and denom. These are integers because they need to be by
+the definition of rational numbers. The ostream << overloaded operator's
+prototype declares it as a friend function because iostream is an overarching
+form of output; it pertains to more than just one class, etc. The default
+constructor works well as intended in the lab 2 instructions. However, I was
+unable to give the user an option to use a default constructor in the
+interactive mode. To do so required me to construct objects, such as
+fractionC, in different levels of an if/else loop. Logically it made sense,
+but computer-wise it did not.
+
+The rational.cpp is the heart of the program. The two constructors are at the
+top of the file. Next come the operator overloading methods. The << operator
+resembles that in C4Board.cpp. The rest of the overloaded operators are fairly
+self-explanatory. I covered the four main arithmetic functions, and made ==
+mean to set the first fraction equal to the inputted one. The += and -= use
+algebraic formulas, (a/b) + (c/d) = (ad+bc)/(bd) and (a/b) - (c/d) =
+(ad-bc)/(bd) respectively. The *= and -= multiply corresponding parts of each
+fraction, with the division one first finding the reciprocal of one fraction.
+
+The next part of rational.cpp has the declarations of the methods
+that use each of the above operators. recipProd uses *= and manually finds the
+reciprocal using a temporary variable. difDivRational was my attempt at
+creativity. I thought it would be cool to see what happens by alternating
+diving one fraction by the second and subtracting one from the other. In order
+to look for cool patterns I displayed the updated fraction each iteration of
+the while loop. It's a little abstract but very interesting to play with. This
+function uses both /= and -=. The next, limit, uses *= to raise a fraction to
+a high power. Once it is raised to a high power, the limit is determined and
+displayed for the user. addRational,divRational, and setEqual are
+self-explanatory. The play method takes care of everything else: checking if
+the denominator equals zero (through the checkDenomZero method), simplifying,
+(through the simplify method) and displaying (using the << overloaded
+operator). 
+
+This program is structured with more emphasis on main.cpp (compared to the
+last lab). main.cpp has the overarching while loop that defines interactive
+mode. The user first inputs two rationals, as instructed by the lab 2
+document. The play methods of the rationals are then called to simplify, check
+if the denominator is valid, and output the fractions in the (x/y) manner
+suggested in the instructions. There is a second use of checkDenomZero that
+"continue"s the while loop to the next iteration, while the checkDenomZero in
+the play function is used to display an error message. The menu is then
+displayed in the while loop. There is an if/else loop that interprets the user
+input and calls the appropriate methods to do what the user requests. 
+
+The program displays "1e+07" when the limit is equal to infinity in order to communicate to the user
+that it is a very large number. Because these are rationals, the limit will 
+never be equal to negative infinity (try raising (-4/3)^100 if you don't
+believe me). Basically, the three possible outputs of the limit function are
+0, 1, and 1e+07. 
+
+I verified this program's correctness by testing along the coding process. I
+first wrote the << overloaded operator and tested that it successfully
+displayed a (1/1) when paired with the default constructor. I then tested
+rationals that should have issues, like 8/0, and ensured that a proper error
+message was displayed and the while loop "continue"d, rather than infinite
+regresses and seg faults. I at first thought that the limit method was
+incorrect because (-3/2)^10 was a positive number, but after mathematical
+investigation realized that the computer was right. I also tested invalid user
+inputs.

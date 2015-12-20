@@ -1,0 +1,36 @@
+CSE20212 Final Project
+02-16-2015
+
+Team Members:
+
+Madelyn Nelson, Elliott Runburg, Jared Rodgers, Charles Shinaver
+
+
+Software:
+
+In today's world, computers are present nearly everywhere. In almost all work
+places, computers provide the driving force behind efficiency. Therefore,
+faculty with computers is one of the most important skills in the business
+world. Typing, being the main interface one has with a computer, is required
+above all. Those who do not know how to type are at a severe
+disadvantage. In order to prevent this, it is best to start learning how to
+type as a child. The problem is, for most people, typing is not inherently
+fun. Therefore, in order to effectively teach typing to a child, one must
+develop software that is both fun to use and effective in teaching typing. 
+Our solution to this is to create a game that the child can play via typing
+words that appear on the screen. This program will also be useful for adults
+who wish to improve their typing skills, including the use of numbers,
+commands, and symbols. 
+
+Solution:
+
+The user navigates an avatar throughout a two-dimensional world, avoiding obstances, traversing
+heights, and slaying enemies by means of typing. The avatar, a sprite, appears to be
+running to the right across a moving screen. In order to overcome an obstacle,
+the user must correctly type the specified word that appears on or near the
+respective obstacle. Various game levels are determined by the speed of the
+moving board, the length of the words to be typed, and the presence of special
+characters and keys (such as "thIs" and "$@$$y"). SDL graphics will be used to
+design the background screen, while sprites will be used to animate the moving
+figures. 
+

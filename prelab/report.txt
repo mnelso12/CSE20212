@@ -1,0 +1,68 @@
+Madelyn Nelson 
+CSE20212 Prelab, Pi Approximation and Mortgage Calculator
+
+Pi Approximation
+
+The pi approximation program, entitled pi.cpp, does not use a makefile. The user is
+prompted to input the number of terms that (s)he wants in the Taylor Series pi 
+approximation (the equation is given in the prelab prompt). This value is inputted
+and stored as "term". The variable pi is initialized at 4, the first term in the 
+Taylor Series. The program then checks whether or not the inputted value is <2.
+It enters a while loop of displaying an error message that terminates when the
+user enters a value that is >= 2. 
+
+The programmer intended on using a for loop to display the full list of estimates
+term by term. However, doing so eliminated the first term = 4 output, because 
+pi was initialized at 4 and the for loop starts with term equalling 1. Instead of
+changing the loop, the programmer decided to write out a separate estimate output
+message for the first term. After the for loop, return 0 cleans up the main 
+function. 
+
+
+Mortgage Calculator
+
+The mortgage calculator program consists of four files: main.cpp, mortgage.cpp,
+mortgage.h, and Makefile. The makefile was copied from the one from Fund Comp I, 
+with the first three lines changed accordingly. The main function is used to 
+demonstrate different aspects of the program according to the rubric.
+
+The first part of the main function creates a Mortgage object called "first" using 
+non-default parameters. Later in main, this object is used to demonstrate the 
+amortize method by displaying an accurate, organized mortgage table. 
+
+The second part of the main function demonstrates the error message. The input
+values for the object called "fail" have a first monthly payment that is less 
+than that month's interest, meaning the debt with forever be growing. 
+Mortgage.cpp checks this problem, as well as the problem of a negative interest
+rate, using an if loop within the constructor. 
+
+The third part of the main function creates an object called "second" that uses
+the constructor with default values built in already. 
+
+$10,000 is then credited, or subtracted, from the balance of the "second" 
+mortgage and displayed to the user, demonstrating the credit function. Because
+the default principal value for the mortgage is $100, crediting $10k leaves $90,
+which is accurately displayed to the user. 
+
+The amortize method is the most complicated. The programmer included the iomanip
+library in order to use functions such as setprecision, fixed, left, setw, and
+setfill to organize the amortization table. These functions are used to create
+a table that is evenly spaced out with monetary values that have two decimal 
+places. The function first increments month by month in a for loop until the
+principal value is <= 0, at which point it stops displaying. At first, the last
+row of the table did not display. In order to correct it, the programmer added
+an if loop within the for loop to check whether or not the last payment was 
+greater than or equal to the balance of that time. This prevents the principal 
+from becoming negative. The method then prints the last two lines of the table,
+making the last payment value equal to the previous balance value plus the 
+interest of the last month. The balance then equals zero.
+
+The program was checked for accuracy by testing out many different values
+for the principal, interest rate, and payment. The program outputted the same
+values as the example in the prelab prompt. The programmer also checked for 
+accuracy by calculating some simple example mortgage problems by hand and
+comparing with the computer's output. 
+
+Overall, the user just executes the program and sits back and watches. The
+user does not input anything. In order to test the functions, the user must
+read this report and/or change the main.cpp to see what's being executed.

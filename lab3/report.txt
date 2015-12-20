@@ -1,0 +1,70 @@
+Madelyn Nelson (and partner Vanice Cheung)
+CSE20212 Lab 3: Inheritance, Composition, and Polymorphism
+
+These programs were checked for correctness through lots of testing. We first
+created packages with only addresses in order to get the syntax down, then
+added the other variables like zip code and name. The packages we used to test
+the TwoDayPackage were originally used to test the OvernightPackage as well
+in order to make sure that the package cost was different for the two
+different types. Manual calculations were also done to make sure that the
+package calculations for cost were correct. There was an issue with the
+program trunkating the doubles into integers at some point, causing some of
+the outputs to be the same. This was found and fixed by changing the int to a
+double. This program could be improved in the future by using setprecision in
+order to make the monetary values all have two digits following the decimal
+place. 
+
+
+Part 2
+
+The program checks that the user entered a positive weight in the non-default
+constructor. If the weight is negative, the program assumes that the user
+intended to enter a positive version of the weight (or if the weight was
+negaitve and the user intended to gain money from the transaction, making the
+input weight positive comes back to haunt the user). An error message is
+displayed saying that the weight was changed to positive, and the program
+continues. The cost per ounce is not inputted by the user because in real
+companies it would not be. The company controls the standard rate for all
+packages.  
+
+
+Part 3
+
+The bank account and credit card part is pretty self explanatory. A small
+driver function is used to show that the composition was successful. There are
+objects of type BankAccount in the CreditCard class. To me, composition seems
+more intuitive because it's so direct and I've done it before. One class
+having members that are of another class type makes sense. However, I think
+that inheritance is probably better in the long run. Composition is useful if
+derived classes only want to use some of their parent class's abilities.
+Inheritance would be better if the derived classes always needed all of the
+parents' capabilities, or in situations where it is assumed that the derived
+class is obviously always going to be related to the parent. With inheritance,
+if you change the base class it can be a pain to change all the derived
+classes accordingly. Composition doesn't have this problem. However, it's
+easier to add subclasses using inheritance than it is to add child-ish classes
+using composition. Composition also limits access easily, so it can be hard
+for classes to communicate with each other. Inheritance automatically gives
+child classes access to parent class members and variables.  
+
+Overall, we created a base class with two derived classes that used the
+protected variables in their own versions of a virtual print function.
+This program allows the user to input package information, such as names and
+addresses, and outputs a pretty version of the information and a calculated
+version of the cost of each package, as well as the final total cost. We chose
+to use a vector rather than a static array in order to loop through the virtual
+print functions of each package. The variables in Package were changed from
+private to protected so the child classes, TwoDayPackage and OvernightPackage
+were able to directly use the variables in their virtual print functions without
+a get function.
+
+In order to make an abstract base class, you need a pure virtual function. This
+function must be overwritten by the derived classes. Abstract classes are
+intended to be base classes. Derived classes that implemenent the missing
+functions in the absract base class are concrete. The virtual print function in
+this program is pure because it =0, even though it outputs a double. This double is used in
+main to calculate the total cost of the full day's packages. The double would
+have to be changed to void if the cost was calculated separately. The derived classes do
+override the virtual print function already, so they are concrete. Having an abstract base class helps
+organize the derived classes and minimize confusion between functions, while
+also allowing the programmer to take advantage of inheritance. 

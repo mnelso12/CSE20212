@@ -1,0 +1,42 @@
+Madelyn Nelson
+report.txt
+CSE20212 lab 10
+
+From the user's perspective, this program is useful for comparing the contents
+of two files, which can either be in regular plain text form or html.
+Application-wise, this program is useful for checking for plaigarism online,
+because it can compare text documents to online html files and only compare
+important content that is not formatting. The user is asked to input two file
+names. It is assumed that the file exist. If they don't exist, the program seg
+faults. The program checks that the file opens correctly. If it doesn't open,
+an error message is displayed. 
+
+The program is structured in one main class, called docClass after document
+class. Each file that is inputted has its own class. This class has a Jaccard
+method which takes another map as an input, which can be calculated using the
+getMap method of another object. This class has a private variable called
+myFile, which stores the name of the input file. The most important part is a
+private map called wordMap, which counts the number of each word in the file
+and stores it in a map/dictionary. 
+
+In order to account for html files, I included a method called htmlConverter
+which intakes a line and uses regular expressions to simplify it down to a
+regular, non-html text line. It then runs regularly with the same jaccard
+method in order to compare it to any other file. The countWords() method reads
+the file into its private map variable, while also taking into account
+case-sensitivity by using to_lower for each character that is read. The tolkien
+vector, which was going to be named token vector originally, is cleared after
+each line in order to prevent the words from concatinating -- an error that
+arose the first run through the program.
+
+As described in the lab instructions, the jaccard method loops through the
+words in each map, finds the intersection between the two (words that are the
+same), and meanwhile finds the total size of the union between the files. The
+output is the ratio between the intersection and the union. 
+
+I checked the program for correct results by creating test files with known
+numbers of each given word and manually comparing the jaccard calculations to
+the actual ratio between similar words.
+
+In part 1, the time can be calculated using time a.out in the command line.
+
